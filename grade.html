@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>青牛软件评分</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web App">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="demo/css/pygments.css">
+    <link rel="stylesheet" href="css/rocketTop.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+<header>
+    <img src="img/logo.png" alt="" class="logo">
+</header>
+<section>
+    <div class="findBox">
+        <h2 class="title" style="margin-bottom: 25px;">请输入您要评价的员工姓名</h2>
+        <p style="position: relative">
+            <input type="text" id="name">
+            <button id="startGrade">开始评价</button>
+            <div class="zqSearch hidden">
+                <ul class="nameList">
+
+                </ul>
+            </div>
+        </p>
+        <p class="red hide nothing">您输入的员工姓名为空，请重新输入</p>
+        <p class="bottomTip">请正确输入员工姓名，具体可查询员工通讯录</p>
+    </div>
+
+    <div class="gradeBox workerBox hidden">
+        <h2 class="title workerName workName"></h2>
+        <h4 class="unfinish hide">您有指标未做评价，请检查！</h4>
+        <p class="option"><span class="optionSelect">1. 敬业精神:</span> <span class="star first" id="first" ></span>
+            <span class="detail">敬业精神:对工作兢兢业业、不辞辛苦，强烈的责任感，对工作效果要求完美。</span>
+        </p>
+        <p class="option"><span class="optionSelect">2. 业务知识:</span> <span class="star second" id="second" ></span>
+            <span class="detail">业务知识：对于本岗位要求的专业知识和技能有很广很深的理解和了解，对专业技能有很强的执行能力。</span>
+        </p>
+        <p class="option"><span class="optionSelect">3. 执行能力:</span> <span class="star third" id="third" ></span>
+            <span class="detail">执行能力：能够很好的运用业务知识和技能，在实际工作中执行的效果和效率都比较好。</span>
+        </p>
+        <p class="option"><span class="optionSelect">4. 主动与创新性:</span> <span class="star fouth" id="fouth" ></span>
+            <span class="detail">主动与创新性：主动积极的开展工作并承担压力，对工作能够提出改进方案和创新的想法。</span>
+        </p>
+        <p class="option"><span class="optionSelect">5. 协作精神:</span> <span class="star fifth" id="fifth" ></span>
+            <span class="detail">协作精神：对于工作配合，愿意与人协作，态度友好，能够站在对方的角度考虑问题。</span>
+        </p>
+        <h5>1星很差，2星较弱，3星正常，4星较好，5星优秀；</h5>
+        <h5>请检查确认您的评价内容，<span style="color: red">提交后无法修改。</span></h5>
+        <button class="restart" style="background: #f38e32">重选</button>
+        <!--<button class="finish" style="background: #4aacc5">完成</button>-->
+        <button class="next" style="background: #53D9F2">提交</button>
+    </div>
+
+    <div class="gradeBox leaderBox hidden">
+        <h2 class="title workerName leadName"></h2>
+        <h4 class="unfinish hide">您有指标未做评价，请检查！</h4>
+        <p class="option"><span class="optionSelect">1. 大局观:</span> <span class="star" id="one" ></span>
+            <span class="detail">大局观:考虑问题能以公司总体利益为重,不以部门利益或个人利益为重。认同公司文化理念并在实际工作中应用。</span>
+        </p>
+        <p class="option"><span class="optionSelect">2. 管理能力:</span> <span class="star" id="two"></span>
+            <span class="detail">管理能力:对下属的员工能够给予很好的培养和开发，通过适当的激励和督促使所属员工工作热情高、效率高。</span>
+        </p>
+        <p class="option"><span class="optionSelect">3. 沟通能力:</span> <span class="star" id="three"></span>
+            <span class="detail">沟通能力:能够与上级、同事、相关接口部门进行良好的沟通，及时发现问题并解决问题。</span>
+        </p>
+        <p class="option"><span class="optionSelect">4. 业务能力:</span> <span class="star" id="four"></span>
+            <span class="detail">业务能力:个人的业务能力很强，是某个专业方面的专家或能手。</span>
+        </p>
+        <p class="option"><span class="optionSelect">5. 敬业精神:</span> <span class="star" id="five"></span>
+            <span class="detail">敬业精神：对工作兢兢业业、不辞辛苦，强烈的责任感，对工作效果的要求完美，持之以恒。</span>
+        </p>
+        <h5>1星很差，2星较弱，3星正常，4星较好，5星优秀；</h5>
+        <h5>请检查确认您的评价内容，<span style="color: red">提交后无法修改。</span></h5>
+        <button class="restart" style="background: #f38e32">重选</button>
+       <!-- <button class="finish" style="background: #4aacc5">完成</button>-->
+        <button class="next" style="background: #53D9F2">提交</button>
+    </div>
+
+
+    <div class="showBox">
+
+    </div>
+    <div id="shape">
+        <div class="shapeColor">
+            <div class="shapeFly">
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+<script src="lib/jquery.raty.min.js"></script>
+<script src="jsRander/jsrander.min.js"></script>
+<script src="js/rocketTop.js"></script>
+<script src="js/grade.js"></script>
+<script id="commentTpl" type="text/x-jsrender">
+		<div class="comment-cell">
+                <h2 class="title workerName">{{:workerName}}</h2>
+                <p class="option"><span class="optionSelect">1. 大局观:</span> <span class="star" data-score={{:score1}} ></span></p>
+                <p class="option"><span class="optionSelect">2. 管理能力:</span> <span class="star" data-score={{:score2}}></span></p>
+                <p class="option"><span class="optionSelect">3. 沟通能力:</span> <span class="star" data-score={{:score3}}></span></p>
+                <p class="option"><span class="optionSelect">4. 业务能力:</span> <span class="star" data-score={{:score4}}></span></p>
+                <p class="option"><span class="optionSelect">5. 敬业精神:</span> <span class="star" data-score={{:score5}}></span></p>
+		</div>
+</script>
+<script id="commentList" type="text/x-jsrender">
+		<div class="comment-cell">
+                <h2 class="title workerName">{{:workerName}}</h2>
+                <p class="option"><span class="optionSelect">1. 敬业精神:</span> <span class="star" data-score={{:score1}} ></span></p>
+                <p class="option"><span class="optionSelect">2. 业务知识:</span> <span class="star" data-score={{:score2}}></span></p>
+                <p class="option"><span class="optionSelect">3. 执行能力:</span> <span class="star" data-score={{:score3}}></span></p>
+                <p class="option"><span class="optionSelect">4. 主动与创新性:</span> <span class="star" data-score={{:score4}}></span></p>
+                <p class="option"><span class="optionSelect">5. 协作精神:</span> <span class="star" data-score={{:score5}}></span></p>
+		</div>
+</script>
+<script id="nameList" type="text/x-jsrender">
+		<div class="comment">
+		    <li>{{:nameSearch}}</li>
+		</div>
+</script>
+
+</html>

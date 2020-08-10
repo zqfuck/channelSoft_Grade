@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邀请码登录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web App">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body style="background: url('./img/bj.jpg') no-repeat center;">
+<header>
+    <img src="img/logo.png" alt="" class="logo">
+</header>
+<section>
+    <h2>青牛软件2017年终互评调查</h2>
+    <div class="loginBox">
+        <h3 style="font-weight: normal;">请输入您的验证码</h3>
+        <p><input type="password" id="code"></p>
+        <span class="red hide loginCode" style="margin-left: -40px;">请输入正确邀请码</span>
+        <p><button id="sureBtn">确定</button></p>
+       <div style="margin: 20px 0">
+           <p class="loginTip">匿名评价,一人一个验证码,请务必妥善保管您的验证码,请使用PC端登录;</p>
+           <p class="loginTip">此验证码在有限期内可重复登录,请在1月19日18:00前反馈评价结果，逾期则系统关闭;</p>
+           <p class="loginTip">员工匿名互评是为了正视问题,激励先进,您的意见很重要,请积极对接口的同事、上级、下级,进行如实评价,感谢您的参与.</p>
+       </div>
+        <!--<p class="greenTip">公司对评价结果会非常重视,请大家踊跃参加、如实评价.</p>
+        <p class="greenTip">好的评价将作为我们的榜样,不好的评价我们会让相关人员正视并积极解决问题.</p>-->
+        <p>感谢 <a href="http://www.v114.com" class="color">视频云(v114.com)</a> 同事的大力支持</p>
+    </div>
+</section>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    var code;
+    $('#code').focus();
+    $("#sureBtn").click(function () {
+        code = $("#code").val();
+        $.ajax({
+            url: URL+'/login/check.do',
+            type: "post",
+            dataType: "json",
+            cache: false,
+            //async: false, // 同步加载
+            data: {
+                accessCode:code
+            },
+            error:function (data) {
+                console.log(data);
+                alert("服务器出错，请刷新重试")
+            },
+            success:function (data) {
+                if(data.success){
+                    localStorage.zq_accessCode = code;
+                    window.location.href='grade.html';
+                }else {
+                    $(".loginCode").text(data.msg);
+                    showTip("loginCode");
+                    $("#code").val('');
+                }
+            }
+        });
+    })
+</script>
+</html>
